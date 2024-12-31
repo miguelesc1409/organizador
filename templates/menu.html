@@ -1,0 +1,17 @@
+<body>
+  <img src="static\images\ojo.png" id="toggle-button" alt="no sale" width="30" height="30">
+  
+  <div class="sidebar" id="sidebar">
+   <br> 
+      <ul class="nav flex-column">
+        {% for coleccion in colecciones %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('categorias', coleccion=coleccion) }}">{{ coleccion }}</a>
+        </li>
+    {% endfor %}
+      </ul>
+  </div>
+  <div class="main-content" id="main-content">
+      
+
+    

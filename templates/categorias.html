@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+{% include 'menu.html' %}
+
+
+{% block content %}
+<br>
+<h1>{{ nombre_categoria }}</h1>
+
+<div class="jumbotron">
+    {% if contenido %}
+        {% for elemento in contenido %}
+        <li class="li_ideas">
+            <div class="row">
+            <div class="col">
+            {% for tema,texto in elemento.items() %}
+                {% if tema!='_id' %}
+                    {% if tema=='nombre' %}
+                    <h4>{{ texto }}</h4>
+                    {% else %}
+                    <p>{{ tema }}: {{ texto }}</p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="col-1">
+            <a href="{{ url_for('edit', id=elemento['_id'], coleccion=nombre_categoria) }}">Editar</a>
+            </div>
+        </div>
+        </li>
+        {% endfor %}
+    {% else %}
+        <p>No se encontró ningún mensaje en la base de datos.</p>
+    {% endif %}
+
+    
+</div>
+{% endblock %}
+
+{% include 'footer.html' %}
